@@ -9,7 +9,6 @@
 		"barryvdh/laravel-cors": "0.4.x@dev"
 	},
 	"require-dev": {
-		"mockery/mockery": "0.9.*",
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
 		"codeception/codeception": "2.0.x-dev"
