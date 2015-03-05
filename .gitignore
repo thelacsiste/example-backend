@@ -1,0 +1,7 @@
+/vendor
+/node_modules
+/test/_output
+/test/_data
+/storage
+.env
+.env.example

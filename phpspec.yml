@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Mareck
+        psr4_prefix: Mareck
+        src_path: app
