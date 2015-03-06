@@ -15,6 +15,8 @@ class CommentTest extends \Codeception\TestCase\Test
         $this->comment_id = $this->tester->haveRecord('comments', [
             'author' => 'John',
             'text' => 'blabla',
+            'created_at' => new Datetime,
+            'updated_at' => new Datetime,
         ]);
     }
 
