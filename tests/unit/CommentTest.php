@@ -1,7 +1,5 @@
 <?php
 
-use Mareck\Comment as Comment;
-
 class CommentTest extends \Codeception\TestCase\Test
 {
     /**
@@ -27,7 +25,11 @@ class CommentTest extends \Codeception\TestCase\Test
     // tests
     public function testMe()
     {
-        $comment = Comment::find($this->comment_id);
+        $comment = $this->tester->grabRecord('comments', [
+            'id' => $this->comment_id
+        ]);
+        
+        // $comment = Comment::find($this->comment_id);
         
         $this->assertFalse($comment->author == 'truc');
         $this->assertTrue($comment->author == 'John');
