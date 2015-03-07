@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 use Mareck\Repositories\CommentRepositoryInterface;
+use Mareck\Http\Requests\CreateCommentRequest;
 
 class CommentController extends Controller {
 
@@ -40,7 +41,7 @@ class CommentController extends Controller {
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateCommentRequest $request)
     {
     	$this->comment->create([
 			'author' =>  $request->input('author'),
