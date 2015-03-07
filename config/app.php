@@ -144,6 +144,7 @@ return [
 		'Mareck\Providers\ConfigServiceProvider',
 		'Mareck\Providers\EventServiceProvider',
 		'Mareck\Providers\RouteServiceProvider',
+		'Mareck\Providers\BackendServiceProvider',
 
 		'Barryvdh\Cors\CorsServiceProvider',
 	],

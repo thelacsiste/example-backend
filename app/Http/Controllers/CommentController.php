@@ -6,7 +6,7 @@ use Mareck\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-use Mareck\Comment as Comment;
+use Mareck\Repositories\CommentRepositoryInterface;
 
 class CommentController extends Controller {
 
@@ -20,7 +20,7 @@ class CommentController extends Controller {
      * [__construct]
      * @param Comment $comment [CommentRepo]
      */
-    public function __construct(Comment $comment)
+    public function __construct(CommentRepositoryInterface $comment)
     {
         $this->comment = $comment;
     }
