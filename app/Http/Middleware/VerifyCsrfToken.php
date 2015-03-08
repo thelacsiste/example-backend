@@ -14,7 +14,10 @@ class VerifyCsrfToken extends BaseVerifier {
 	 */
 	public function handle($request, Closure $next)
 	{
+		// Do not perform CSRF checks for API requests
+        if (preg_match("#^/api#", $request->path()) !== false) {
+            return $next($request);
+        }
 		return parent::handle($request, $next);
 	}
-
 }
