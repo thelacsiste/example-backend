@@ -27,6 +27,36 @@ class CommentsResourceCest
         $I->seeResponseContainsJson(['success' => true]);
     }
 
+    public function validateCreateComment(ApiTester $I)
+    {
+        $I->haveHttpHeader('Content-Type', 'application/x-www-form-urlencoded');
+        $I->haveHttpHeader('Accept','application/json');
+        $I->sendPOST($this->endpoint, []);
+        $I->seeResponseCodeIs(422);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(['author' => ['Le champ author est obligatoire.'], 'text' => ['Le champ text est obligatoire.']]);  
+    }
+
+    public function validateAuthorCreateComment(ApiTester $I)
+    {
+        $I->haveHttpHeader('Content-Type', 'application/x-www-form-urlencoded');
+        $I->haveHttpHeader('Accept','application/json');
+        $I->sendPOST($this->endpoint, ['text' => 'By George Tolkien']);
+        $I->seeResponseCodeIs(422);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(['author' => ['Le champ author est obligatoire.']]);
+    }
+
+public function validateTextCreateComment(ApiTester $I)
+    {
+        $I->haveHttpHeader('Content-Type', 'application/x-www-form-urlencoded');
+        $I->haveHttpHeader('Accept','application/json');
+        $I->sendPOST($this->endpoint, ['author' => 'Game of Rings']);
+        $I->seeResponseCodeIs(422);
+        $I->seeResponseIsJson();
+        $I->seeResponseContainsJson(['text' => ['Le champ text est obligatoire.']]);      
+    }
+
     public function deleteComment(ApiTester $I)
     {
         $id = (string) $this->haveComment($I, ['author' => 'Game of Thrones']);
