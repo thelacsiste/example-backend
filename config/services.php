@@ -34,4 +34,10 @@ return [
 		'secret' => '',
 	],
 
+	'google' => [
+		'client_id'     => '763672080471-g6s8ak4sjhl4u8tolhsdfjnt14nc8nuv.apps.googleusercontent.com',
+		'client_secret' => '2PC1eef3OOAOODkGOLTIRBgX',
+		'redirect'      => 'http://localhost:8000/login',
+	],
+
 ];

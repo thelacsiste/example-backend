@@ -11,11 +11,16 @@
 |
 */
 
-Route::get('/', function() {});
+get('/', function() {});
+
+get('home', 'HomeController@index');
+
+get('login', 'Auth\AuthController@login');
+get('logout', 'Auth\AuthController@getLogout');
 
 Route::group(array('prefix' => 'api'), function() {
 
-    Route::resource('comments', 'CommentController', 
+    resource('comments', 'CommentController', 
         array('only' => array('index', 'store', 'destroy')));
-  
+
 });

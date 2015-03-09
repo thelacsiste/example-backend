@@ -1,11 +1,14 @@
 <?php namespace Mareck\Http\Controllers\Auth;
 
 use Mareck\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\Registrar;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class AuthController extends Controller {
+use Mareck\AuthenticateUser;
+use Mareck\AuthenticateUserListener;
+
+
+class AuthController extends Controller implements AuthenticateUserListener {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -20,19 +23,31 @@ class AuthController extends Controller {
 
 	use AuthenticatesAndRegistersUsers;
 
+	
 	/**
-	 * Create a new authentication controller instance.
-	 *
-	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
-	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
-	 * @return void
-	 */
-	public function __construct(Guard $auth, Registrar $registrar)
-	{
-		$this->auth = $auth;
-		$this->registrar = $registrar;
+     * @param AuthenticateUser $authenticateUser
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function login(AuthenticateUser $authenticateUser, Request $request)
+    {
+        $hasCode = $request->has('code');
+        
+        return $authenticateUser->execute($hasCode, $this);
+    }
+    
+    /**
+     * When a user has successfully been logged in...
+     *
+     * @param $user
+     * @return \Illuminate\Routing\Redirector
+     */
+    public function userHasLoggedIn($user)
+    {
+        return redirect('/home');
+    }
 
-		$this->middleware('guest', ['except' => 'getLogout']);
-	}
+    
+
 
 }

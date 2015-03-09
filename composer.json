@@ -6,12 +6,17 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"barryvdh/laravel-cors": "0.4.x@dev"
+		"barryvdh/laravel-cors": "0.4.x@dev",
+		"laravel/socialite": "~2.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
-		"codeception/codeception": "2.0.x-dev"
+		"codeception/codeception": "2.0.x-dev",
+		"behat/behat": "~3.0",
+		"behat/mink": "~1.6",
+		"behat/mink-extension": "~2.0",
+		"laracasts/behat-laravel-extension": "~1.0"
 	},
 	"autoload": {
 		"classmap": [
